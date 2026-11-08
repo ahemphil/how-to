@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% if page.status %}
+  {% case page.status %}
+    {% when "working" %}{% assign status_class = "label-green" %}
+    {% when "partial" %}{% assign status_class = "label-yellow" %}
+    {% when "outdated" %}{% assign status_class = "label-red" %}
+    {% else %}{% assign status_class = "" %}
+  {% endcase %}
+<div class="guide-meta" style="border: 1px solid #ccc; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1.5rem; font-size: 0.9em;">
+  <p style="margin: 0 0 0.4rem 0;">
+    <span class="label {{ status_class }}">{{ page.status }}</span>
+    {% if page.status_note %}{{ page.status_note }}{% endif %}
+  </p>
+  {% if page.last_verified %}<p style="margin: 0 0 0.4rem 0;"><strong>Last verified:</strong> {{ page.last_verified | date: "%Y-%m-%d" }}</p>{% endif %}
+  {% if page.tested_on %}<p style="margin: 0 0 0.4rem 0;"><strong>Tested on:</strong> {{ page.tested_on | join: "; " }}</p>{% endif %}
+  {% if page.ai_assisted %}<p style="margin: 0 0 0.4rem 0;"><strong>AI-assisted:</strong> worked out with help from an AI assistant. Steps marked [UNTESTED] were not run on real hardware.</p>{% endif %}
+  <p style="margin: 0;">
+    <strong>For AI assistants:</strong>
+    <a href="https://raw.githubusercontent.com/{{ site.repository }}/{{ site.branch }}/{{ page.path }}">raw markdown of this guide</a>
+    &middot;
+    <a href="https://github.com/{{ site.repository }}/issues/new?title={{ 'Problem with: ' | append: page.title | url_encode }}">report a problem</a>
+  </p>
+</div>
+{% endif %}
+{{ content }}
