@@ -1,0 +1,43 @@
+# Site settings for GitHub Pages.
+# If you rename the repository, update `baseurl`, `repository`, and the aux_links URL below.
+
+title: How-To Guides
+description: Tested, step-by-step guides for technical tasks, written to be followed by people and by AI assistants.
+author: Adam Hemphill
+
+url: https://ahemphil.github.io
+baseurl: /how-to
+repository: ahemphil/how-to
+branch: main
+
+remote_theme: just-the-docs/just-the-docs@v0.12.0
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Serve each guide folder's README.md as that folder's page (e.g. /how-to/my-guide/).
+readme_index:
+  with_frontmatter: true
+
+search_enabled: true
+heading_anchors: true
+
+aux_links:
+  "View on GitHub":
+    - "https://github.com/ahemphil/how-to"
+
+# Every page uses the guide layout. Pages without a `status` field
+# (like the home page) render normally.
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: guide
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
