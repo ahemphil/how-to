@@ -38,7 +38,7 @@ AI agents working in this repository should read [AGENTS.md](AGENTS.md) first.
 
 | Guide | Status | Last verified |
 |---|---|---|
-| *No guides published yet.* | | |
+| [Run OpenCode on local models with llama.cpp on an AMD GPU (Ubuntu)](opencode-llamacpp-local-models/) | `working` | 2026-11-07 |
 
 ## License
 
